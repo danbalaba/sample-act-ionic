@@ -1,0 +1,7 @@
+{
+  "name": "sample-act",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
