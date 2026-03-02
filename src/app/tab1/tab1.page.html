@@ -1,17 +1,143 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
+    <ion-title class="modern-title">
+      <ion-icon name="sparkles-outline"></ion-icon>
+      Future Dashboard
     </ion-title>
+    <ion-button slot="end" fill="clear" size="small" class="glass-button">
+      <ion-icon name="settings-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="modern-bg">
+  <div class="gradient-overlay"></div>
+  
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large" class="modern-title">Future Dashboard</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div class="container">
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          Welcome to the <span class="gradient-text">Future</span>
+        </h1>
+        <p class="hero-subtitle">
+          Experience cutting-edge web design with AI-powered insights
+        </p>
+        <div class="hero-buttons">
+          <ion-button class="modern-btn primary" expand="block">
+            <ion-icon slot="start" name="rocket-outline"></ion-icon>
+            Get Started
+          </ion-button>
+          <ion-button class="modern-btn secondary" expand="block" fill="outline">
+            <ion-icon slot="start" name="play-outline"></ion-icon>
+            Watch Demo
+          </ion-button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="floating-card card-1">
+          <ion-icon name="cube-outline"></ion-icon>
+          <span>3D Design</span>
+        </div>
+        <div class="floating-card card-2">
+          <ion-icon name="shield-checkmark-outline"></ion-icon>
+          <span>Security</span>
+        </div>
+        <div class="floating-card card-3">
+          <ion-icon name="analytics-outline"></ion-icon>
+          <span>Analytics</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="features-section">
+      <h2 class="section-title">Powerful Features</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon ai">
+            <ion-icon name="bulb-outline"></ion-icon>
+          </div>
+          <h3>AI Assistant</h3>
+          <p>Smart recommendations powered by machine learning algorithms</p>
+          <ion-button class="feature-link" fill="clear">
+            Learn more <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+          </ion-button>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon speed">
+            <ion-icon name="speedometer-outline"></ion-icon>
+          </div>
+          <h3>Lightning Fast</h3>
+          <p>Optimized performance with next-generation web technologies</p>
+          <ion-button class="feature-link" fill="clear">
+            Learn more <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+          </ion-button>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon mobile">
+            <ion-icon name="phone-portrait-outline"></ion-icon>
+          </div>
+          <h3>Mobile First</h3>
+          <p>Perfectly responsive design for all devices and screen sizes</p>
+          <ion-button class="feature-link" fill="clear">
+            Learn more <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+          </ion-button>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon secure">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+          </div>
+          <h3>Enterprise Security</h3>
+          <p>Bank-level encryption and compliance with modern security standards</p>
+          <ion-button class="feature-link" fill="clear">
+            Learn more <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Statistics Section -->
+    <div class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number" data-target="99.9">0</div>
+          <div class="stat-label">Uptime %</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="2400">0</div>
+          <div class="stat-label">Active Users</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="150">0</div>
+          <div class="stat-label">Countries</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="500">0</div>
+          <div class="stat-label">Projects</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+      <div class="cta-content">
+        <h2>Ready to Transform Your Workflow?</h2>
+        <p>Join thousands of innovators already using our platform</p>
+        <ion-button class="cta-button" expand="block" size="large">
+          <ion-icon slot="start" name="star-outline"></ion-icon>
+          Start Free Trial
+        </ion-button>
+      </div>
+    </div>
+  </div>
 </ion-content>
