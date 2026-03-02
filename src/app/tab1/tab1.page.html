@@ -3,6 +3,15 @@
     <ion-title>
       Button Activity
     </ion-title>
+    <ion-button
+      slot="end"
+      fill="clear"
+      size="small"
+      (click)="toggleDarkMode()"
+      class="theme-toggle"
+    >
+      <ion-icon [name]="isDarkMode ? 'sunny' : 'moon'"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
