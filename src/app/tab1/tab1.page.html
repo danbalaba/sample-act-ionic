@@ -1,122 +1,17 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Button Activity
+      Tab 1
     </ion-title>
-    <ion-button
-      slot="end"
-      fill="clear"
-      size="small"
-      (click)="toggleDarkMode()"
-      class="theme-toggle"
-    >
-      <ion-icon [name]="isDarkMode ? 'sunny' : 'moon'"></ion-icon>
-    </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
+<ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Button Activity</ion-title>
+      <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div class="button-gallery">
-    <!-- Dynamic Button and Code Preview -->
-    <div class="section">
-      <div class="button-preview-container">
-        <ion-button
-          [expand]="buttonConfig.expand"
-          [shape]="buttonConfig.shape"
-          [fill]="buttonConfig.fill"
-          [size]="buttonConfig.size"
-          [color]="buttonConfig.color"
-          [class.icon-only]="buttonConfig.icon === 'only'"
-        >
-          <ng-container [ngSwitch]="buttonConfig.icon">
-            <ng-container *ngSwitchCase="'left'">
-              <ion-icon slot="start" name="star"></ion-icon>
-              My Button
-            </ng-container>
-            <ng-container *ngSwitchCase="'right'">
-              My Button
-              <ion-icon slot="end" name="star"></ion-icon>
-            </ng-container>
-            <ng-container *ngSwitchCase="'only'">
-              <ion-icon slot="icon-only" name="star"></ion-icon>
-            </ng-container>
-            <ng-container *ngSwitchDefault>
-              My Button
-            </ng-container>
-          </ng-container>
-        </ion-button>
-
-        <pre class="code-preview">{{ getButtonCode() }}</pre>
-      </div>
-    </div>
-
-    <!-- Expand Styles -->
-    <div class="section expand-section">
-      <h3>Expand Styles</h3>
-      <ion-button color="primary" (click)="updateButtonStyle('expand', 'block')">BLOCK</ion-button>
-      <ion-button color="primary" (click)="updateButtonStyle('expand', 'full')">FULL</ion-button>
-    </div>
-
-    <!-- Shapes -->
-    <div class="section">
-      <h3>Shapes</h3>
-      <ion-button shape="default" color="primary" (click)="updateButtonStyle('shape', 'default')">DEFAULT</ion-button>
-      <ion-button shape="round" color="primary" (click)="updateButtonStyle('shape', 'round')">ROUND</ion-button>
-    </div>
-
-    <!-- Fill Styles -->
-    <div class="section">
-      <h3>Fill Styles</h3>
-      <ion-button fill="default" color="primary" (click)="updateButtonStyle('fill', 'default')">DEFAULT</ion-button>
-      <ion-button fill="clear" color="primary" (click)="updateButtonStyle('fill', 'clear')">CLEAR</ion-button>
-      <ion-button fill="outline" color="primary" (click)="updateButtonStyle('fill', 'outline')">OUTLINE</ion-button>
-      <ion-button fill="solid" color="primary" (click)="updateButtonStyle('fill', 'solid')">SOLID</ion-button>
-    </div>
-
-    <!-- Sizes -->
-    <div class="section">
-      <h3>Sizes</h3>
-      <ion-button size="small" color="primary" (click)="updateButtonStyle('size', 'small')">SMALL</ion-button>
-      <ion-button size="default" color="primary" (click)="updateButtonStyle('size', 'default')">DEFAULT</ion-button>
-      <ion-button size="large" color="primary" (click)="updateButtonStyle('size', 'large')">LARGE</ion-button>
-    </div>
-
-    <!-- Icon Positions -->
-    <div class="section">
-      <h3>Icon Positions</h3>
-      <ion-button color="primary" (click)="updateButtonStyle('icon', 'left')">
-        <ion-icon slot="start" name="star"></ion-icon>
-        LEFT ICON
-      </ion-button>
-      <ion-button color="primary" (click)="updateButtonStyle('icon', 'right')">
-        RIGHT ICON
-        <ion-icon slot="end" name="star"></ion-icon>
-      </ion-button>
-      <ion-button color="primary" (click)="updateButtonStyle('icon', 'only')">
-        <ion-icon name="star"></ion-icon>
-      </ion-button>
-      <ion-button color="primary" (click)="updateButtonStyle('icon', 'none')">NO ICON</ion-button>
-    </div>
-
-    <!-- Colors -->
-    <div class="section">
-      <h3>Colors</h3>
-      <ion-button color="default" (click)="updateButtonStyle('color', 'default')">DEFAULT</ion-button>
-      <ion-button color="primary" (click)="updateButtonStyle('color', 'primary')">PRIMARY</ion-button>
-      <ion-button color="secondary" (click)="updateButtonStyle('color', 'secondary')">SECONDARY</ion-button>
-      <ion-button color="tertiary" (click)="updateButtonStyle('color', 'tertiary')">TERTIARY</ion-button>
-      <ion-button color="success" (click)="updateButtonStyle('color', 'success')">SUCCESS</ion-button>
-      <ion-button color="warning" (click)="updateButtonStyle('color', 'warning')">WARNING</ion-button>
-      <ion-button color="danger" (click)="updateButtonStyle('color', 'danger')">DANGER</ion-button>
-      <ion-button color="light" (click)="updateButtonStyle('color', 'light')">LIGHT</ion-button>
-      <ion-button color="medium" (click)="updateButtonStyle('color', 'medium')">MEDIUM</ion-button>
-      <ion-button color="dark" (click)="updateButtonStyle('color', 'dark')">DARK</ion-button>
-    </div>
-  </div>
+  <app-explore-container name="Tab 1 page"></app-explore-container>
 </ion-content>
