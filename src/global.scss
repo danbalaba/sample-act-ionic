@@ -33,5 +33,37 @@
  */
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import "@ionic/angular/css/palettes/dark.class.css";
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+/* Test styles to verify dark mode is working */
+:root {
+  --ion-background-color: #ffffff;
+  --ion-text-color: #000000;
+}
+
+body.dark,
+.dark {
+  --ion-background-color: #1e1e1e;
+  --ion-text-color: #ffffff;
+  --ion-primary-color: #6366f1;
+  --ion-secondary-color: #ec4899;
+  --ion-tertiary-color: #8b5cf6;
+}
+
+/* Override some specific components for dark mode */
+.dark ion-header {
+  --ion-background-color: #2c2c2c;
+  --ion-text-color: #ffffff;
+}
+
+.dark ion-content {
+  --ion-background-color: #1e1e1e;
+  --ion-text-color: #ffffff;
+}
+
+.dark .code-preview {
+  background-color: #2d2d2d;
+  color: #d4d4d4;
+  border-color: #404040;
+}
