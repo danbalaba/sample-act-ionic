@@ -1,87 +1,115 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon } from '@ionic/angular/standalone';
-import { NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import { addIcons } from 'ionicons';
-import { star, sunny, moon } from 'ionicons/icons';
+import { sunny, moon } from 'ionicons/icons';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, NgSwitch, NgSwitchCase, NgSwitchDefault],
+  imports: [
+    IonHeader, 
+    IonToolbar, 
+    IonTitle, 
+    IonContent, 
+    IonButton, 
+    IonIcon
+  ]
 })
-export class Tab2Page implements OnInit {
-  buttonConfig = {
-    expand: 'block',
-    shape: 'default',
-    fill: 'solid',
-    size: 'large',
-    color: 'primary',
-    icon: 'left' // left, right, only, none
-  };
-
-  isDarkMode = false;
-
-  ngOnInit() {
-    // Check initial dark mode preference
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-    this.isDarkMode = prefersDark.matches;
-    document.documentElement.classList.toggle('dark', this.isDarkMode);
-    document.body.classList.toggle('dark', this.isDarkMode);
-
-    // Listen for system dark mode changes
-    prefersDark.addEventListener('change', (mediaQuery) => {
-      this.isDarkMode = mediaQuery.matches;
-      document.documentElement.classList.toggle('dark', this.isDarkMode);
-      document.body.classList.toggle('dark', this.isDarkMode);
-    });
-  }
+export class Tab2Page implements OnInit, OnDestroy {
+  timeString: string = '';
+  dateString: string = '';
+  hourHandStyle: string = '';
+  minuteHandStyle: string = '';
+  secondHandStyle: string = '';
+  isDarkMode: boolean = true;
+  timer: any;
+  timeOfDay: string = 'night'; // morning, afternoon, evening, night
+  gradientStyle: string = '';
 
   constructor() {
     addIcons({
-      star,
       sunny,
       moon
     });
   }
 
+  ngOnInit() {
+    // Initialize dark mode
+    document.body.classList.add('dark');
+    
+    // Set initial time
+    this.updateClock();
+    
+    // Update clock every second
+    this.timer = setInterval(() => {
+      this.updateClock();
+    }, 1000);
+  }
+
+  ngOnDestroy() {
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
+  }
+
+  updateClock() {
+    const now = new Date();
+    
+    // Digital clock
+    this.timeString = now.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    });
+    
+    this.dateString = now.toLocaleDateString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+
+    // Determine time of day
+    this.updateTimeOfDay(now.getHours());
+
+    // Analog clock
+    const hours = now.getHours() % 12;
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+
+    const hourDegrees = (hours * 30) + (minutes / 2);
+    const minuteDegrees = (minutes * 6) + (seconds / 10);
+    const secondDegrees = seconds * 6;
+
+    this.hourHandStyle = `rotate(${hourDegrees}deg)`;
+    this.minuteHandStyle = `rotate(${minuteDegrees}deg)`;
+    this.secondHandStyle = `rotate(${secondDegrees}deg)`;
+  }
+
+  updateTimeOfDay(hours: number) {
+    if (hours >= 5 && hours < 12) {
+      this.timeOfDay = 'Morning';
+      this.gradientStyle = 'linear-gradient(135deg, #ff9a56 0%, #ff6a3c 50%, #ff4757 100%)'; // Sunrise colors
+    } else if (hours >= 12 && hours < 17) {
+      this.timeOfDay = 'Afternoon';
+      this.gradientStyle = 'linear-gradient(135deg, #ffcc00 0%, #ff9900 50%, #ff6600 100%)'; // Afternoon sky
+    } else if (hours >= 17 && hours < 21) {
+      this.timeOfDay = 'Evening';
+      this.gradientStyle = 'linear-gradient(135deg, #ff6b6b 0%, #ffa502 50%, #ff4757 100%)'; // Sunset colors
+    } else {
+      this.timeOfDay = 'Night';
+      this.gradientStyle = 'linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%)'; // Night sky
+    }
+  }
+
   toggleDarkMode() {
     this.isDarkMode = !this.isDarkMode;
-    console.log('Toggling dark mode:', this.isDarkMode);
-    // Add/remove dark class from both document element and body for full compatibility
-    const htmlElement = document.documentElement;
-    const bodyElement = document.body;
-
     if (this.isDarkMode) {
-      htmlElement.classList.add('dark');
-      bodyElement.classList.add('dark');
+      document.body.classList.add('dark');
     } else {
-      htmlElement.classList.remove('dark');
-      bodyElement.classList.remove('dark');
+      document.body.classList.remove('dark');
     }
-
-    console.log('HTML class list:', htmlElement.classList);
-    console.log('Body class list:', bodyElement.classList);
-  }
-
-  updateButtonStyle(styleType: string, value: string) {
-    this.buttonConfig[styleType as keyof typeof this.buttonConfig] = value;
-  }
-
-  getButtonCode(): string {
-    const { expand, shape, fill, size, color, icon } = this.buttonConfig;
-    let buttonContent = '';
-
-    if (icon === 'left') {
-      buttonContent = `<ion-icon slot="start" name="star"></ion-icon>My Button`;
-    } else if (icon === 'right') {
-      buttonContent = `My Button<ion-icon slot="end" name="star"></ion-icon>`;
-    } else if (icon === 'only') {
-      buttonContent = `<ion-icon slot="icon-only" name="star"></ion-icon>`;
-    } else {
-      buttonContent = `My Button`;
-    }
-
-    return `<ion-button expand="${expand}" shape="${shape}" fill="${fill}" size="${size}" color="${color}">${buttonContent}</ion-button>`;
   }
 }
