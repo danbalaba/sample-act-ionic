@@ -1,89 +1,236 @@
-.button-gallery {
-  max-width: 100%;
-  margin: 0;
-  text-align: left;
-  padding: 0;
-}
-
-.section {
-  margin-bottom: 30px;
-  text-align: left;
-  padding: 0;
-}
-
-.section h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 15px;
-  color: var(--ion-color-dark);
-  text-align: left;
-}
-
-.section ion-button {
-  margin-right: 10px;
-  margin-bottom: 10px;
-}
-
-.button-preview-container {
+.clock-container {
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+  min-height: 100vh;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: flex-start;
-  gap: 20px;
-  margin-bottom: 30px;
-  text-align: left;
+}
+
+.clocks-wrapper {
+  display: flex;
+  gap: 40px;
   flex-wrap: wrap;
-  min-height: 120px;
-}
-
-.code-preview {
-  background-color: var(--ion-color-light);
-  padding: 15px;
-  border-radius: 4px;
-  font-family: monospace;
-  font-size: 0.875rem;
-  color: var(--ion-color-dark);
-  flex: 1;
-  max-width: 600px;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  margin: 0;
-  text-align: left;
-  border: 1px solid #e5e7eb;
-}
-
-/* Dark mode specific styles */
-.dark .code-preview {
-  background-color: #2d2d2d;
-  color: #d4d4d4;
-  border-color: #404040;
-}
-
-.dark .section h3 {
-  color: #ffffff;
-}
-
-/* Fix expand styles */
-.section.expand-section {
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
   width: 100%;
 }
 
-.section.expand-section ion-button {
-  width: auto;
-  margin-right: 10px;
-  margin-bottom: 10px;
+.clock-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 400px;
 }
 
-/* Set specific width for block button to match professor's preview,
-    but not for icon-only buttons */
-.button-preview-container ion-button[expand="block"]:not(.icon-only) {
-  width: 250px !important;
+.clock-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 48px 0 rgba(0, 0, 0, 0.4);
 }
 
-/* Set specific widths for expand style buttons */
-.section.expand-section ion-button[expand="block"] {
-  width: 100px !important;
+.clock-card h2 {
+  color: #e0e0e0;
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 300;
+  letter-spacing: 2px;
 }
 
-.section.expand-section ion-button[expand="full"] {
-  width: 100px !important;
+/* Analog Clock */
+.analog-clock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.clock-face {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+}
+
+.hour-mark {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 2px;
+  height: 15px;
+  background: rgba(255, 255, 255, 0.3);
+  transform-origin: 50% 140px;
+}
+
+.hour-mark:nth-child(1) { transform: translateX(-50%) rotate(30deg); }
+.hour-mark:nth-child(2) { transform: translateX(-50%) rotate(60deg); }
+.hour-mark:nth-child(3) { transform: translateX(-50%) rotate(90deg); }
+.hour-mark:nth-child(4) { transform: translateX(-50%) rotate(120deg); }
+.hour-mark:nth-child(5) { transform: translateX(-50%) rotate(150deg); }
+.hour-mark:nth-child(6) { transform: translateX(-50%) rotate(180deg); }
+.hour-mark:nth-child(7) { transform: translateX(-50%) rotate(210deg); }
+.hour-mark:nth-child(8) { transform: translateX(-50%) rotate(240deg); }
+.hour-mark:nth-child(9) { transform: translateX(-50%) rotate(270deg); }
+.hour-mark:nth-child(10) { transform: translateX(-50%) rotate(300deg); }
+.hour-mark:nth-child(11) { transform: translateX(-50%) rotate(330deg); }
+.hour-mark:nth-child(12) { transform: translateX(-50%) rotate(360deg); }
+
+.hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+}
+
+.hour-hand {
+  width: 8px;
+  height: 80px;
+  background: linear-gradient(to top, #00ffff, #00cccc);
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.minute-hand {
+  width: 6px;
+  height: 110px;
+  background: linear-gradient(to top, #ff6b6b, #ee5a24);
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+}
+
+.second-hand {
+  width: 2px;
+  height: 130px;
+  background: linear-gradient(to top, #ffd93d, #f39c12);
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(255, 217, 61, 0.8);
+}
+
+.clock-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  background: #00ffff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+}
+
+/* Digital Clock */
+.digital-clock {
+  text-align: center;
+  padding: 20px;
+}
+
+.time-display {
+  font-size: 4rem;
+  font-weight: 300;
+  color: #00ffff;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  font-family: 'Courier New', monospace;
+}
+
+.date-display {
+  font-size: 1.2rem;
+  color: #b0b0b0;
+  font-weight: 300;
+  letter-spacing: 1px;
+  line-height: 1.5;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  --background: transparent;
+  --color: #00ffff;
+}
+
+.theme-toggle:hover {
+  --background: rgba(0, 255, 255, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .clocks-wrapper {
+    gap: 30px;
+  }
+
+  .clock-card {
+    padding: 25px;
+  }
+
+  .clock-face {
+    width: 250px;
+    height: 250px;
+  }
+
+  .hour-hand {
+    height: 65px;
+  }
+
+  .minute-hand {
+    height: 90px;
+  }
+
+  .second-hand {
+    height: 110px;
+  }
+
+  .time-display {
+    font-size: 3rem;
+  }
+
+  .date-display {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .clocks-wrapper {
+    gap: 20px;
+  }
+
+  .clock-card {
+    padding: 20px;
+  }
+
+  .clock-face {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hour-hand {
+    height: 50px;
+    width: 6px;
+  }
+
+  .minute-hand {
+    height: 70px;
+    width: 4px;
+  }
+
+  .second-hand {
+    height: 85px;
+  }
+
+  .time-display {
+    font-size: 2.5rem;
+  }
+
+  .date-display {
+    font-size: 0.9rem;
+  }
 }
