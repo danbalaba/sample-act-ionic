@@ -1,0 +1,89 @@
+.button-gallery {
+  max-width: 100%;
+  margin: 0;
+  text-align: center;
+  padding: 0;
+}
+
+.section {
+  margin-bottom: 30px;
+  text-align: center;
+  padding: 0;
+}
+
+.section h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--ion-color-dark);
+  text-align: center;
+}
+
+.section ion-button {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.button-preview-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  text-align: left;
+  flex-wrap: wrap;
+  min-height: 120px;
+}
+
+.code-preview {
+  background-color: var(--ion-color-light);
+  padding: 15px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.875rem;
+  color: var(--ion-color-dark);
+  flex: 1;
+  max-width: 600px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0;
+  text-align: left;
+  border: 1px solid #e5e7eb;
+}
+
+/* Dark mode specific styles */
+.dark .code-preview {
+  background-color: #2d2d2d;
+  color: #d4d4d4;
+  border-color: #404040;
+}
+
+.dark .section h3 {
+  color: #ffffff;
+}
+
+/* Fix expand styles */
+.section.expand-section {
+  width: 100%;
+}
+
+.section.expand-section ion-button {
+  width: auto;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+/* Set specific width for block button to match professor's preview,
+    but not for icon-only buttons */
+.button-preview-container ion-button[expand="block"]:not(.icon-only) {
+  width: 250px !important;
+}
+
+/* Set specific widths for expand style buttons */
+.section.expand-section ion-button[expand="block"] {
+  width: 100px !important;
+}
+
+.section.expand-section ion-button[expand="full"] {
+  width: 100px !important;
+}
