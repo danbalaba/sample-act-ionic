@@ -1,13 +1,13 @@
 .button-gallery {
   max-width: 100%;
   margin: 0;
-  text-align: right;
+  text-align: left;
   padding: 0;
 }
 
 .section {
   margin-bottom: 30px;
-  text-align: right;
+  text-align: left;
   padding: 0;
 }
 
@@ -16,7 +16,7 @@
   font-weight: 600;
   margin-bottom: 15px;
   color: var(--ion-color-dark);
-  text-align: right;
+  text-align: left;
 }
 
 .section ion-button {
@@ -27,7 +27,7 @@
 .button-preview-container {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 20px;
   margin-bottom: 30px;
   text-align: left;
