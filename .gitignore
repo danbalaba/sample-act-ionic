@@ -69,6 +69,9 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# Screenshots
+screenshots/
+
 # Summary files
 changes-summary.txt
 pull-request-instructions.md
